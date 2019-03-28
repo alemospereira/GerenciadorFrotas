@@ -41,11 +41,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entidades\Caminhao.cs" />
+    <Compile Include="Entidades\Onibus.cs" />
+    <Compile Include="Entidades\VeiculoBase.cs" />
+    <Compile Include="Interfaces\IAplicacaoBase.cs" />
+    <Compile Include="Interfaces\IVeiculoAplicacao.cs" />
+    <Compile Include="Interfaces\IRepositorioBase.cs" />
+    <Compile Include="Interfaces\IVeiculoRepositorio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Entidades\" />
-    <Folder Include="Interfaces\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -6,14 +6,11 @@ using System.Threading.Tasks;
 
 namespace DominioFrotas.Entidades
 {
-    public class Onibus : VeiculoBase
+    public class Onibus
     {
         public Onibus(string chassi, string cor)
         {
-            base.TipoVeiculo = TipoVeiculo.Onibus;
-            base.NumeroPassageiros = 42;
-            base.Chassi = chassi;
-            base.Cor = cor;
+            new Veiculo() { Chassi = chassi, Cor = cor, NumeroPassageiros = 42, TipoVeiculo = TipoVeiculo.Onibus };
         }
     }
 }

@@ -43,7 +43,7 @@
   <ItemGroup>
     <Compile Include="Entidades\Caminhao.cs" />
     <Compile Include="Entidades\Onibus.cs" />
-    <Compile Include="Entidades\VeiculoBase.cs" />
+    <Compile Include="Entidades\Veiculo.cs" />
     <Compile Include="Interfaces\IAplicacaoBase.cs" />
     <Compile Include="Interfaces\IVeiculoAplicacao.cs" />
     <Compile Include="Interfaces\IRepositorioBase.cs" />

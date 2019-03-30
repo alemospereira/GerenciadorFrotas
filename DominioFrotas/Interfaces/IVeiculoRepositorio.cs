@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DominioFrotas.Interfaces
 {
-    public interface IVeiculoRepositorio : IRepositorioBase<VeiculoBase>
+    public interface IVeiculoRepositorio : IRepositorioBase<Veiculo>
     {
     }
 }

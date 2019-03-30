@@ -8,35 +8,35 @@ using System.Threading.Tasks;
 
 namespace AplicacaoFrotas.Aplicacoes
 {
-    public class VeiculosAplicacao : IVeiculoAplicacao
+    public class VeiculoAplicacao : IVeiculoAplicacao
     {
         private readonly IVeiculoRepositorio _veiculoRepositorio;
 
-        public VeiculosAplicacao(IVeiculoRepositorio veiculoRepositorio)
+        public VeiculoAplicacao(IVeiculoRepositorio veiculoRepositorio)
         {
             _veiculoRepositorio = veiculoRepositorio;
         }
-        public void Adicionar(VeiculoBase item)
+        public void Adicionar(Veiculo item)
         {
             _veiculoRepositorio.Adicionar(item);
         }
         
-        public void Editar(VeiculoBase item)
+        public void Editar(Veiculo item)
         {
             _veiculoRepositorio.Editar(item);
         }
 
-        public IEnumerable<VeiculoBase> Listar()
+        public IEnumerable<Veiculo> Listar()
         {
             return _veiculoRepositorio.Listar();
         }
 
-        public VeiculoBase ListarPorId(int id)
+        public Veiculo ListarPorId(int id)
         {
             return _veiculoRepositorio.ListarPorId(id);
         }
 
-        public void Remover(VeiculoBase item)
+        public void Remover(Veiculo item)
         {
             _veiculoRepositorio.Remover(item);
         }

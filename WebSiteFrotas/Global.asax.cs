@@ -12,6 +12,7 @@ namespace WebSiteFrotas
     {
         protected void Application_Start()
         {
+            DependenciaFrota.UnityConfig.Start();
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);

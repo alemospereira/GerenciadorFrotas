@@ -1,4 +1,5 @@
-﻿using DominioFrotas.Entidades;
+﻿using DadosFrotas.Configuracao;
+using DominioFrotas.Entidades;
 using System.Data.Entity;
 
 namespace DadosFrotas.Contexto
@@ -9,7 +10,11 @@ namespace DadosFrotas.Contexto
         {
 
         }
-
-        public DbSet<VeiculoBase> Veiculos { get; set; }
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Configurations.Add(new VeiculosMap());
+            base.OnModelCreating(modelBuilder);
+        }
+        public DbSet<Veiculo> Veiculos { get; set; }
     }
 }

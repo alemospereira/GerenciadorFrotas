@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DadosFrotas.Repositorio
 {
-    public class VeiculoRepositorio : RepositorioBase<VeiculoBase>, IVeiculoRepositorio
+    public class VeiculoRepositorio : RepositorioBase<Veiculo>, IVeiculoRepositorio
     {
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DominioFrotas.Entidades
 {
-    public class VeiculoBase
+    public class Veiculo
     {
         public int Id { get; set; }
         public string Chassi { get; set; }

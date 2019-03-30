@@ -14,16 +14,22 @@ namespace WebSiteFrotas.ViewModels
         [Required(ErrorMessage = "Campo Chassi é obrigatório.")]
         public string Chassi { get; set; }
         [Required(ErrorMessage = "Campo Tipo é obrigatório.")]
-        public int TipoVeiculo { get; set; }
+        public TipoVeiculoView TipoVeiculo { get; set; }
         [Required(ErrorMessage = "Campo Cor é obrigatório.")]
         public string Cor { get; set; }
 
-        public VeiculoViewModel(VeiculoBase item)
+        public VeiculoViewModel(Veiculo item)
         {
             Id = item.Id;
             Chassi = item.Chassi;
-            TipoVeiculo =  (int)item.TipoVeiculo;
+            TipoVeiculo =  (TipoVeiculoView)item.TipoVeiculo;
             Cor = item.Cor;
+        }
+
+        public enum TipoVeiculoView
+        {
+            Caminhao = 1,
+            Onibus = 2
         }
     }
 }

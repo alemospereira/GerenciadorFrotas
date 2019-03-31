@@ -83,6 +83,8 @@ namespace WebSiteFrotas.Controllers
             }
             catch
             {
+                var message = "Ocorreu algum erro para editar o veículo.";
+                ModelState.AddModelError(string.Empty, message);
                 return View();
             }
         }
@@ -103,8 +105,16 @@ namespace WebSiteFrotas.Controllers
                 _veiculoAplicacao.Remover(viewModel.Id);
                 return RedirectToAction("Index");
             }
+            catch (NullReferenceException ex)
+            {
+                var message = ex.Message;
+                ModelState.AddModelError(viewModel.Id.ToString(), message);
+                return View();
+            }
             catch
             {
+                var message = "Ocorreu algum erro para deletar o veículo.";
+                ModelState.AddModelError(string.Empty, message);
                 return View();
             }
         }

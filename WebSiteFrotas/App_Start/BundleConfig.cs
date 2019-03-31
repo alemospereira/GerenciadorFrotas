@@ -24,7 +24,9 @@ namespace WebSiteFrotas
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/site.css",
+                      "~/Content/fonts/font-awesome-4.7.0/css/font-awesome.min.css",
+                      "~/Content/vendor/perfect-scrollbar/perfect-scrollbar.css"));
         }
     }
 }

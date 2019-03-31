@@ -9,5 +9,7 @@ namespace DominioFrotas.Interfaces
 {
     public interface IVeiculoRepositorio : IRepositorioBase<Veiculo>
     {
+        IEnumerable<Veiculo> Listar(string filtro);
+        Veiculo ListarPorChassi(string chassi);
     }
 }

@@ -41,8 +41,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entidades\Caminhao.cs" />
-    <Compile Include="Entidades\Onibus.cs" />
     <Compile Include="Entidades\Veiculo.cs" />
     <Compile Include="Interfaces\IAplicacaoBase.cs" />
     <Compile Include="Interfaces\IVeiculoAplicacao.cs" />

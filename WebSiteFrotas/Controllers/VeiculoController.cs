@@ -16,36 +16,51 @@ namespace WebSiteFrotas.Controllers
             _veiculoAplicacao = veiculoAplicacao;
         }
         // GET: Veiculo
-        public ActionResult Index()
+        public ActionResult Index(string filtro)
         {
-            var vm = _veiculoAplicacao.Listar().Select(x => new VeiculoViewModel(x));
+            var vm = _veiculoAplicacao.Listar(filtro).Select(x => new VeiculoViewModel(x));
+            if (vm.Count() == 0 && !string.IsNullOrEmpty(filtro))
+            {
+                var message = string.Format("Chassi: {0} não está cadastrado no sistema", filtro);
+                ModelState.AddModelError(string.Empty, message);
+            }
+
             return View(vm);
         }        
 
         // GET: Veiculo/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            var viewModel = new VeiculoViewModel(_veiculoAplicacao.ListarPorId(id));
+            return View(viewModel);
         }
 
         // GET: Veiculo/Create
         public ActionResult Create()
         {
-            return View();
+            var viewModel = new VeiculoViewModel();
+            return View(viewModel);
         }
 
         // POST: Veiculo/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(VeiculoViewModel viewModel)
         {
             try
             {
-                // TODO: Add insert logic here
-
+                _veiculoAplicacao.Adicionar(viewModel.CriarVeiculo(viewModel.Chassi, viewModel.Cor, viewModel.TipoVeiculo));
                 return RedirectToAction("Index");
             }
-            catch
+            catch(InvalidOperationException ex)
             {
+                var message = string.Format("Chassi: {0} já cadastrado no sistema.", viewModel.Chassi);
+                ModelState.AddModelError(string.Empty, message);
+                return View();
+            }
+            catch (Exception)
+            {
+                var message = "Ocorreu algum erro para cadastrar o veículo.";
+                ModelState.AddModelError(string.Empty, message);
                 return View();
             }
         }
@@ -53,17 +68,17 @@ namespace WebSiteFrotas.Controllers
         // GET: Veiculo/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var viewModel = new VeiculoViewModel(_veiculoAplicacao.ListarPorId(id));
+            return View(viewModel);
         }
 
         // POST: Veiculo/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(VeiculoViewModel viewModel)
         {
             try
             {
-                // TODO: Add update logic here
-
+                _veiculoAplicacao.Editar(viewModel.DominioMap());
                 return RedirectToAction("Index");
             }
             catch
@@ -75,17 +90,17 @@ namespace WebSiteFrotas.Controllers
         // GET: Veiculo/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            var viewModel = new VeiculoViewModel(_veiculoAplicacao.ListarPorId(id));
+            return View(viewModel);
         }
 
         // POST: Veiculo/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(VeiculoViewModel viewModel)
         {
             try
             {
-                // TODO: Add delete logic here
-
+                _veiculoAplicacao.Remover(viewModel.Id);
                 return RedirectToAction("Index");
             }
             catch

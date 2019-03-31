@@ -14,9 +14,9 @@ namespace DominioFrotas.Interfaces
         /// <param name="item"></param>
         void Adicionar(T item);
         T ListarPorId(int id);
-        IEnumerable<T> Listar();
+        IEnumerable<T> Listar(string filtro);
         void Editar(T item);
-        void Remover(T item);
+        void Remover(int id);
         void Dispose();
 
 

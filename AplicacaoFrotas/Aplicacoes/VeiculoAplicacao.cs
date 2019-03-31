@@ -18,6 +18,8 @@ namespace AplicacaoFrotas.Aplicacoes
         }
         public void Adicionar(Veiculo item)
         {
+            if (_veiculoRepositorio.ListarPorChassi(item.Chassi) != null)
+                throw new InvalidOperationException("Chassi já existe cadastrado!");
             _veiculoRepositorio.Adicionar(item);
         }
         
@@ -26,9 +28,9 @@ namespace AplicacaoFrotas.Aplicacoes
             _veiculoRepositorio.Editar(item);
         }
 
-        public IEnumerable<Veiculo> Listar()
+        public IEnumerable<Veiculo> Listar(string filtro)
         {
-            return _veiculoRepositorio.Listar();
+            return _veiculoRepositorio.Listar(filtro);
         }
 
         public Veiculo ListarPorId(int id)
@@ -36,8 +38,11 @@ namespace AplicacaoFrotas.Aplicacoes
             return _veiculoRepositorio.ListarPorId(id);
         }
 
-        public void Remover(Veiculo item)
+        public void Remover(int id)
         {
+            var item = ListarPorId(id);
+            if (item == null)
+                throw new NullReferenceException("Item não encontrado para deletar.");
             _veiculoRepositorio.Remover(item);
         }
         public void Dispose()

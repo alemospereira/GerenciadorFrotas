@@ -17,7 +17,7 @@ namespace DadosFrotas.Repositorio
             Db.SaveChanges();
         }
         
-        public void Editar(T item)
+        public virtual void Editar(T item)
         {
             Db.Entry(item).State = System.Data.Entity.EntityState.Modified;
             Db.SaveChanges();
@@ -34,7 +34,7 @@ namespace DadosFrotas.Repositorio
         }
 
         public void Remover(T item)
-        {
+        {            
             Db.Set<T>().Remove(item);
             Db.SaveChanges();
         }

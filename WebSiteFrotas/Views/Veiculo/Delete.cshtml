@@ -1,0 +1,60 @@
+﻿@model WebSiteFrotas.ViewModels.VeiculoViewModel
+
+@using (Html.BeginForm("Delete", "Veiculo", FormMethod.Post, Model))
+{
+    @Html.HiddenFor(model => model.Id)
+
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.Id)
+
+    <div class="form-horizontal">
+        <br />
+        <h5>Deletar Veículo</h5>
+        <br />
+        <br />
+        <h5>Deseja deletar este veículo?</h5>
+        <hr />
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Chassi, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-12">
+                @Html.TextBoxFor(model => model.Chassi, new { @class = "form-control", @readonly = true, data_val = "false" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TipoVeiculo, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-12">
+                @Html.EnumDropDownListFor(model => model.TipoVeiculo, new { @class = "form-control", @readonly = true })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.NumeroPassageiros, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-12">
+                @Html.TextBoxFor(model => model.NumeroPassageiros, new { @class = "form-control", @readonly = true })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Cor, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-12">
+                @Html.TextBoxFor(model => model.Cor, new { @class = "form-control", @readonly = true })
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="row">
+                <div class="col">
+                </div>
+                <div class="col text-right">
+                    <button type="button" onclick="location.href='@Url.Action("Index")'" class="btn btn-outline-danger">Voltar</button>
+                    <input type="submit" value="Deletar" class="btn btn-outline-danger" />
+                </div>
+            </div>
+        </div>
+    </div>
+}
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
